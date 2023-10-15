@@ -1,17 +1,57 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import Button from '@mui/material/Button';
-import './App.css'
+import React from "react";
+import { RouterProvider, createBrowserRouter } from "react-router-dom";
+
+import { Layout } from "./components";
+import { HomePage, AboutPage, SearchPage, CartPage, CheckoutPage, CoursePage, MyLearningPage } from "./pages";
+import { Toaster } from "react-hot-toast";
 
 function App() {
-  const [count, setCount] = useState(0)
+
+
+  const router = createBrowserRouter([
+    {
+      path: "/",
+      element: <Layout />,
+      children: [
+        {
+          path: '',
+          element: <HomePage />
+        },
+        {
+          path: 'about',
+          element: <AboutPage />
+        },
+        {
+          path: 'search',
+          element: <SearchPage />
+        },
+        {
+          path: 'cart',
+          element: <CartPage />
+        },
+        {
+          path: 'checkout',
+          element: <CheckoutPage />
+        },
+        {
+          path: 'course',
+          element: <CoursePage />
+        },
+        {
+          path: 'my-learning',
+          element: <MyLearningPage />
+        },
+      ],
+    },
+
+  ]);
 
   return (
-    <>
+    <React.Fragment>
 
-      <Button variant="contained">Hello world</Button>;
-    </>
+      <RouterProvider router={router} />
+      <Toaster />
+    </React.Fragment>
   )
 }
 
