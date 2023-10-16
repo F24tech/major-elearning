@@ -5,6 +5,8 @@ import { Layout } from "./components";
 import { HomePage, AboutPage, SearchPage, CartPage, CheckoutPage, CoursePage, MyLearningPage } from "./pages";
 import { Toaster } from "react-hot-toast";
 
+
+
 function App() {
 
 
@@ -48,7 +50,6 @@ function App() {
 
   return (
     <React.Fragment>
-
       <RouterProvider router={router} />
       <Toaster />
     </React.Fragment>
