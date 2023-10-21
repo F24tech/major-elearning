@@ -1,10 +1,11 @@
 import React from 'react'
-import { Hero } from '../components'
+import { Hero, TrustCompanies } from '../components'
 
 function HomePage() {
     return (
         <React.Fragment>
             <Hero />
+            <TrustCompanies />
         </React.Fragment>
     )
 }

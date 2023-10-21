@@ -1,8 +1,9 @@
 import Layout from "./Layout";
 
 import Hero from "./pages/home/Hero";
+import TrustCompanies from "./pages/home/trust-companies";
 
 
 
 
-export { Layout, Hero }
+export { Layout, Hero, TrustCompanies }
