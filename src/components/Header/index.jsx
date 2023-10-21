@@ -13,6 +13,8 @@ import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import NotificationsActiveIcon from '@mui/icons-material/NotificationsActive';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import AccountMenu from './AccountMenu';
+import Logo from '../../assets/logo.svg'
+
 
 
 function Header() {
@@ -46,7 +48,7 @@ function Header() {
             <Grid item md={1.5}>
                 <Link to="/">
                     <IconButton>
-                        <img src="https://www.udemy.com/staticx/udemy/images/v7/logo-udemy.svg" alt="Logo" width={120} />
+                        <img src={Logo} alt="Logo" width={140} />
                     </IconButton>
                 </Link>
             </Grid>

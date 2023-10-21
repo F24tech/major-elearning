@@ -19,7 +19,8 @@ const theme = createTheme({
     tertiary: {
       main: '#7C81AD', // Change the secondary color
     },
-    vibrant: '#E5C3A6'
+    vibrant: '#E5C3A6',
+    light: { main: '#fff', }
   },
 });
 
