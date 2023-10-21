@@ -1,5 +1,6 @@
-import { Button, IconButton, Stack, Typography, useTheme } from '@mui/material'
+import { Button, Grid, IconButton, Stack, Typography, useTheme } from '@mui/material'
 import React from 'react'
+import LanguageIcon from '@mui/icons-material/Language';
 
 import Logo from '../assets/logo.svg'
 import Logo1 from '../assets/logos/logo1.svg'
@@ -10,6 +11,30 @@ import { Link } from 'react-router-dom'
 
 function Footer() {
     const theme = useTheme()
+
+    const footerLinks1 = [
+        { href: '/', title: "Elearn Business" },
+        { href: '/', title: "Teach on Elearn" },
+        { href: '/', title: "Get the App" },
+        { href: '/', title: "About Us" },
+        { href: '/', title: "Contact Us" },
+    ]
+    const footerLinks2 = [
+        { href: '/', title: "Carriers" },
+        { href: '/', title: "Blog" },
+        { href: '/', title: "Help and Support" },
+        { href: '/', title: "Investors" },
+        { href: '/', title: "Affiliates" },
+    ]
+
+    const footerLinks3 = [
+        { href: '/', title: "Terms" },
+        { href: '/', title: "Privacy Policy" },
+        { href: '/', title: "Cookie Settings" },
+        { href: '/', title: "Sitemap" },
+        { href: '/', title: "Accesibility Statement" },
+    ]
+
 
     return (
         <Stack bgcolor={'#000'} p={2} px={4} gap={2} >
@@ -26,7 +51,7 @@ function Footer() {
                     </Typography>
                 </div>
 
-                <Button variant="outlined" color={'light'} >Teach On Udemy</Button>
+                <Button variant="outlined" color={'light'} >Teach On Elearn</Button>
 
 
             </Stack>
@@ -58,6 +83,38 @@ function Footer() {
 
             </Stack>
             {/* Second child */}
+
+            {/* Third  child */}
+            <Grid container py={4} >
+
+                <Grid item md={2} gap={2} >
+                    <Stack gap={1} >
+                        {footerLinks1.map((_, key) =>
+                            <Link key={key} to={_.href}><Typography variant='h6' component='h6' fontSize={14} color='white'   >{_.title}</Typography> </Link>
+                        )}
+                    </Stack>
+                </Grid>
+                <Grid item md={2} gap={2} >
+                    <Stack gap={1} >
+                        {footerLinks2.map((_, key) =>
+                            <Link key={key} to={_.href}><Typography variant='h6' component='h6' fontSize={14} color='white'   >{_.title}</Typography> </Link>
+                        )}
+                    </Stack>
+                </Grid>
+                <Grid item md={2} gap={2} >
+                    <Stack gap={1} >
+                        {footerLinks3.map((_, key) =>
+                            <Link key={key} to={_.href}><Typography variant='h6' component='h6' fontSize={14} color='white'   >{_.title}</Typography> </Link>
+                        )}
+                    </Stack>
+                </Grid>
+
+                <Grid item md={1} ml="auto" >
+                    <Button variant="outlined" color={'light'}  ><LanguageIcon /> English</Button>
+                </Grid>
+
+            </Grid>
+            {/* Third  child */}
 
 
 
