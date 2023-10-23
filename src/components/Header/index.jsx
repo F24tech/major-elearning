@@ -14,11 +14,18 @@ import NotificationsActiveIcon from '@mui/icons-material/NotificationsActive';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import AccountMenu from './AccountMenu';
 import Logo from '../../assets/logo.svg'
+import { useSelector } from 'react-redux';
+import { baseUrl } from '../../utils';
 
 
 
 function Header() {
     const theme = useTheme();
+
+    const { data: settingsData } = useSelector(state => state.landingPage.data)
+
+    console.log(settingsData.attributes)
+
 
     const [anchorEl, setAnchorEl] = useState(null);
 
@@ -48,7 +55,7 @@ function Header() {
             <Grid item md={1.5}>
                 <Link to="/">
                     <IconButton>
-                        <img src={Logo} alt="Logo" width={140} />
+                        <img src={`${baseUrl}${settingsData.attributes.logo.data.attributes.url}`} alt="Logo" width={140} />
                     </IconButton>
                 </Link>
             </Grid>
