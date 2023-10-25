@@ -24,7 +24,6 @@ function Header() {
 
     const { data: settingsData } = useSelector(state => state.landingPage.data)
 
-    console.log(settingsData.attributes)
 
 
     const [anchorEl, setAnchorEl] = useState(null);

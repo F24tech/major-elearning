@@ -1,16 +1,17 @@
-import { Button, Grid, IconButton, Stack, Typography, useTheme } from '@mui/material'
+import { Button, Grid, IconButton, Stack, Typography } from '@mui/material'
 import React from 'react'
 import LanguageIcon from '@mui/icons-material/Language';
 
-import Logo from '../assets/logo.svg'
 import Logo1 from '../assets/logos/logo1.svg'
 import Logo2 from '../assets/logos/logo2.svg'
 import Logo3 from '../assets/logos/logo3.svg'
 import Logo4 from '../assets/logos/logo4.svg'
 import { Link } from 'react-router-dom'
+import { useSelector } from 'react-redux';
+import { baseUrl } from '../utils';
 
 function Footer() {
-    const theme = useTheme()
+    const { data: settingsData } = useSelector(state => state.landingPage.data)
 
     const footerLinks1 = [
         { href: '/', title: "Elearn Business" },
@@ -51,7 +52,7 @@ function Footer() {
                     </Typography>
                 </div>
 
-                <Button variant="outlined" color={'light'} >Teach On Elearn</Button>
+                <Button variant="outlined" color={'light'} >Teach On {settingsData.attributes.title}</Button>
 
 
             </Stack>
@@ -67,7 +68,7 @@ function Footer() {
                     <Typography color="#fff" variant="h6" component="h3" fontWeight={500} >
                         Top companies choose
                         <Link href="/">
-                            <Typography color="vibrant" component='span' variant="h6" fontWeight={600} > Elearn </Typography>
+                            <Typography color="vibrant" component='span' variant="h6" fontWeight={600} > {settingsData.attributes.title} </Typography>
                         </Link>
                         to build in-demand career skills.
                     </Typography>
@@ -122,7 +123,7 @@ function Footer() {
             <Stack direction={'row'} justifyContent={'space-between'} alignItems={'center'} py={4} >
                 <Link to="/">
                     <IconButton>
-                        <img src={Logo} alt="Logo" width={150} />
+                        <img src={`${baseUrl}${settingsData.attributes.logo.data.attributes.url}`} alt="Logo" width={150} />
                     </IconButton>
                 </Link>
 

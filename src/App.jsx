@@ -14,7 +14,7 @@ function App() {
   const { loading } = useSelector(state => state.landingPage)
 
   useEffect(() => {
-    // Landing page settings fetch from redux toolkit
+    // Landing page settings fetch from redux toolkit action dispatched
     dispatch(fetchLandingPageData())
   }, [])
 
