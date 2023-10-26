@@ -1,6 +1,6 @@
 // React 
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 
 // Styles
 import { Grid, IconButton, Menu, MenuItem, Typography, TextField, InputAdornment, Button, Stack, Avatar } from '@mui/material'
@@ -13,7 +13,6 @@ import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import NotificationsActiveIcon from '@mui/icons-material/NotificationsActive';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import AccountMenu from './AccountMenu';
-import Logo from '../../assets/logo.svg'
 import { useSelector } from 'react-redux';
 import { baseUrl } from '../../utils';
 
@@ -21,10 +20,12 @@ import { baseUrl } from '../../utils';
 
 function Header() {
     const theme = useTheme();
+    const navigate = useNavigate();
 
     const { data: settingsData } = useSelector(state => state.landingPage.data)
+    const { data: categoriesData } = useSelector(state => state.categories)
 
-
+    console.log(categoriesData)
 
     const [anchorEl, setAnchorEl] = useState(null);
 
@@ -38,10 +39,10 @@ function Header() {
 
     const handleCategorySelect = (category) => {
         handleCloseMenu();
+        navigate(`/c/${category.attributes.slug}`)
         // You can perform additional actions here based on the selected category.
     };
 
-    const categories = ["Category 1", "Category 2", "Category 3", "Category 4"];
 
     const isLogin = false;
 
@@ -78,9 +79,9 @@ function Header() {
                     open={Boolean(anchorEl)}
                     onClose={handleCloseMenu}
                 >
-                    {categories.map((category) => (
+                    {categoriesData?.data.map((category) => (
                         <MenuItem key={category} onClick={() => handleCategorySelect(category)}>
-                            {category}
+                            {category.attributes.name}
                         </MenuItem>
                     ))}
                 </Menu>

@@ -6,6 +6,7 @@ import { HomePage, AboutPage, SearchPage, CartPage, CheckoutPage, CoursePage, My
 import { Toaster } from "react-hot-toast";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchLandingPageData } from "./redux/landingpageslice";
+import { fetchCategoriesData } from "./redux/categoriesslice";
 
 
 
@@ -16,6 +17,7 @@ function App() {
   useEffect(() => {
     // Landing page settings fetch from redux toolkit action dispatched
     dispatch(fetchLandingPageData())
+    dispatch(fetchCategoriesData())
   }, [])
 
 

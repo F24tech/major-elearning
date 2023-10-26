@@ -1,11 +1,12 @@
 import React from 'react'
-import { Hero, TrustCompanies } from '../components'
+import { CourseCategories, Hero, TrustCompanies } from '../components'
 
 function HomePage() {
     return (
         <React.Fragment>
             <Hero />
             <TrustCompanies />
+            <CourseCategories />
         </React.Fragment>
     )
 }
