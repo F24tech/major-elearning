@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 
 import { Layout, Loader } from "./components";
-import { HomePage, AboutPage, SearchPage, CartPage, CheckoutPage, CoursePage, MyLearningPage } from "./pages";
+import { HomePage, AboutPage, SearchPage, CartPage, CheckoutPage, CoursePage, MyLearningPage, LoginPage, SignupPage } from "./pages";
 import { Toaster } from "react-hot-toast";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchLandingPageData } from "./redux/landingpageslice";
@@ -26,6 +26,7 @@ function App() {
       path: "/",
       element: <Layout />,
       children: [
+
         {
           path: '',
           element: <HomePage />
@@ -53,6 +54,14 @@ function App() {
         {
           path: 'my-learning',
           element: <MyLearningPage />
+        },
+        {
+          path: '/login',
+          element: <LoginPage />
+        },
+        {
+          path: '/signup',
+          element: <SignupPage />
         },
       ],
     },

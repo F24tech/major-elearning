@@ -125,8 +125,8 @@ function Header() {
                             </React.Fragment>
                             :
                             <React.Fragment>
-                                <Button variant="outlined">Login</Button>
-                                <Button variant="contained">Sign Up</Button>
+                                <Button variant="outlined" onClick={() => navigate('/login')} >Login</Button>
+                                <Button variant="contained" onClick={() => navigate('/signup')}>Sign Up</Button>
                             </React.Fragment>
                     }
                 </Stack>
