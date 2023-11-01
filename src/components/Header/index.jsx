@@ -24,6 +24,7 @@ function Header() {
 
     const { data: settingsData } = useSelector(state => state.landingPage.data)
     const { data: categoriesData } = useSelector(state => state.categories)
+    const { user: authData } = useSelector(state => state.auth)
 
     console.log(categoriesData)
 
@@ -43,8 +44,8 @@ function Header() {
         // You can perform additional actions here based on the selected category.
     };
 
-
-    const isLogin = false;
+    console.log(authData, "AUTH_DATAQ")
+    const isLogin = authData !== null;
 
 
 
