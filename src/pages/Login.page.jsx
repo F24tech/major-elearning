@@ -26,11 +26,10 @@ const LoginForm = () => {
             toast.loading('Loading...')
         }
         else if (auth.user !== null) {
+            toast.dismiss()
             navigate('/my-learning')
         }
-        else {
-            toast.dismiss()
-        }
+
     }, [auth])
 
 

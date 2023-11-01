@@ -44,7 +44,6 @@ function Header() {
         // You can perform additional actions here based on the selected category.
     };
 
-    console.log(authData, "AUTH_DATAQ")
     const isLogin = authData !== null;
 
 
