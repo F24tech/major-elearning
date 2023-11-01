@@ -20,10 +20,18 @@ const LoginForm = () => {
         if (auth.error) {
             toast.error(auth.error)
         }
+        if (auth.loading) {
+            toast.loading('Loading...')
+        }
+        else {
+            toast.dismiss()
+        }
     }, [auth])
 
 
-    const handleLogin = () => {
+    const handleLogin = (e) => {
+        e.preventDefault()
+
         // Handle login logic here
         if (!identifier) {
             toast.error("Please enter username or email")
@@ -42,7 +50,7 @@ const LoginForm = () => {
         <Box maxWidth="sm" width={300} my={5} mx="auto" >
             <div >
                 <Typography variant="h4" component="h4" align="center" fontBold={700} >Login to Elearn</Typography>
-                <form>
+                <form onSubmit={handleLogin} >
                     <Grid container mt={2} spacing={3}>
                         <Grid item xs={12}>
                             <TextField
@@ -64,7 +72,7 @@ const LoginForm = () => {
                             />
                         </Grid>
                         <Grid item xs={12}>
-                            <Button variant="contained" color="primary" onClick={handleLogin} fullWidth >
+                            <Button type='submit' variant="contained" color="primary" fullWidth >
                                 Login
                             </Button>
                         </Grid>
