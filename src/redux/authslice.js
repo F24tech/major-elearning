@@ -33,6 +33,33 @@ export const loginAsync = createAsyncThunk('auth/login', async ({ identifier, pa
     }
 });
 
+export const signup = createAsyncThunk('auth/signup', async ({ name, email, password },) => {
+    try {
+        console.log(email, password, `${baseUrl}/api/auth/local/register`)
+        // Make an API request to authenticate the user
+        const response = await fetch(`${baseUrl}/api/auth/local/register`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ email, name, username: email, password }),
+        });
+        console.log(response)
+
+        if (!response.ok) {
+            const errorData = await response.json();
+            throw new Error(errorData.error.message);
+        }
+
+        const user = await response.json();
+
+        // Dispatch the login action to store the user in the Redux store
+
+        return user;
+    } catch (error) {
+        // Handle login error and display a message or perform any other action
+        throw error;
+    }
+});
+
 
 
 
@@ -64,7 +91,21 @@ const authSlice = createSlice({
                 state.loading = false;
                 state.user = null;
                 state.error = action.error.message;
-            });
+            })
+            .addCase(signup.pending, (state) => {
+                state.loading = true;
+                state.error = null;
+            })
+            .addCase(signup.fulfilled, (state, action) => {
+                state.loading = false;
+                state.user = action.payload;
+                state.error = null;
+            })
+            .addCase(signup.rejected, (state, action) => {
+                state.loading = false;
+                state.user = null;
+                state.error = action.error.message;
+            })
     },
 });
 

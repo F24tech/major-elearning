@@ -1,14 +1,21 @@
 import React, { useEffect, useState } from 'react';
-import { Button, TextField, Grid, Box, Typography } from '@mui/material';
+import { Button, TextField, Grid, Box, Typography, FormControl, InputLabel, OutlinedInput, InputAdornment, IconButton } from '@mui/material';
 import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { loginAsync } from '../redux/authslice';
 import toast from 'react-hot-toast';
+import { Visibility, VisibilityOff } from '@mui/icons-material';
 
 
 const LoginForm = () => {
     const [identifier, setIdentifier] = useState('');
     const [password, setPassword] = useState('');
+    const [showPassword, setShowPassword] = useState(false);
+
+    const handleClickShowPassword = () => setShowPassword((show) => !show);
+    const handleMouseDownPassword = (event) => {
+        event.preventDefault();
+    };
 
 
     const auth = useSelector((state) => state.auth)
@@ -66,14 +73,29 @@ const LoginForm = () => {
                             />
                         </Grid>
                         <Grid item xs={12}>
-                            <TextField
-                                label="Password"
-                                type="password"
-                                variant="outlined"
-                                fullWidth
-                                value={password}
-                                onChange={(e) => setPassword(e.target.value)}
-                            />
+
+                            <FormControl variant="outlined" fullWidth >
+                                <InputLabel htmlFor="outlined-adornment-password">Password</InputLabel>
+                                <OutlinedInput
+                                    id="outlined-adornment-password"
+                                    type={showPassword ? 'text' : 'password'}
+                                    value={password}
+                                    onChange={(e) => setPassword(e.target.value)}
+                                    endAdornment={
+                                        <InputAdornment position="end">
+                                            <IconButton
+                                                aria-label="toggle password visibility"
+                                                onClick={handleClickShowPassword}
+                                                onMouseDown={handleMouseDownPassword}
+                                                edge="end"
+                                            >
+                                                {showPassword ? <VisibilityOff /> : <Visibility />}
+                                            </IconButton>
+                                        </InputAdornment>
+                                    }
+                                    label="Password"
+                                />
+                            </FormControl>
                         </Grid>
                         <Grid item xs={12}>
                             <Button type='submit' variant="contained" color="primary" fullWidth >
