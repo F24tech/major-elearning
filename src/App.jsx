@@ -7,6 +7,7 @@ import { Toaster } from "react-hot-toast";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchLandingPageData } from "./redux/landingpageslice";
 import { fetchCategoriesData } from "./redux/categoriesslice";
+import { ProtectedRoutes } from "./utils";
 
 
 
@@ -53,7 +54,7 @@ function App() {
         },
         {
           path: 'my-learning',
-          element: <MyLearningPage />
+          element: <ProtectedRoutes path="/my-learning" component={MyLearningPage} />
         },
         {
           path: '/login',
