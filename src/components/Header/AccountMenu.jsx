@@ -94,7 +94,10 @@ export default function AccountMenu() {
                 <MenuItem onClick={handleClose}>
                     <Avatar /> My Account
                 </MenuItem>
-                <MenuItem onClick={handleClose}>
+                <MenuItem onClick={() => {
+                    navigate('/my-learning')
+                    handleClose()
+                }}>
                     <Avatar /> My Learnings
                 </MenuItem>
                 <Divider />

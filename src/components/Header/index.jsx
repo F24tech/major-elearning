@@ -79,9 +79,9 @@ function Header() {
                     open={Boolean(anchorEl)}
                     onClose={handleCloseMenu}
                 >
-                    {categoriesData?.data.map((category) => (
+                    {categoriesData?.map((category) => (
                         <MenuItem key={category} onClick={() => handleCategorySelect(category)}>
-                            {category.attributes.name}
+                            {category.name}
                         </MenuItem>
                     ))}
                 </Menu>

@@ -3,7 +3,7 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import { baseUrl } from '../utils';
 
 export const fetchCategoriesData = createAsyncThunk('landingPage/categories', async () => {
-  const apiUrl = `${baseUrl}/api/categories?filters[isActive][$eq]=true`;
+  const apiUrl = `${baseUrl}/api/category-courses`;
   const response = await fetch(apiUrl);
   if (!response.ok) {
     throw new Error('Failed to fetch landing page data');

@@ -1,10 +1,11 @@
 import * as React from 'react';
-import PropTypes from 'prop-types';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import { useSelector } from 'react-redux';
+import Card from './card';
+import { Container, Paper, Stack } from '@mui/material';
 
 function CustomTabPanel(props) {
     const { children, value, index, ...other } = props;
@@ -27,18 +28,7 @@ function CustomTabPanel(props) {
     );
 }
 
-CustomTabPanel.propTypes = {
-    children: PropTypes.node,
-    index: PropTypes.number.isRequired,
-    value: PropTypes.number.isRequired,
-};
 
-function a11yProps(index) {
-    return {
-        id: `simple-tab-${index}`,
-        'aria-controls': `simple-tabpanel-${index}`,
-    };
-}
 
 export default function BasicTabs() {
     const [value, setValue] = React.useState(0);
@@ -52,22 +42,35 @@ export default function BasicTabs() {
         <Box sx={{ width: '100%' }}>
             <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
                 <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
-                    {categoriesData?.data.map((category) => (
-                        <Tab label={category.attributes.name} key={category} >
-                            {category.attributes.name}
+                    {categoriesData.map((category) => (
+                        <Tab label={category.name} key={category} >
+                            {category.name}
                         </Tab>
                     ))}
                 </Tabs>
             </Box>
-            <CustomTabPanel value={value} index={0}>
-                Item One
-            </CustomTabPanel>
-            <CustomTabPanel value={value} index={1}>
-                Item Two
-            </CustomTabPanel>
-            <CustomTabPanel value={value} index={2}>
-                Item Three
-            </CustomTabPanel>
+            {categoriesData.map((category, index) => (
+
+                <CustomTabPanel value={value} index={index}>
+                    <Stack flexDirection={"row"} gap={2}  >
+                        {category.courses.map((course) => <Card title={course.name} id={course.id} image={course.thumbnail.url} />)}
+                        {category.courses.length === 0 && <Container style={{
+                            display: 'flex',
+                            flexDirection: 'column',
+                            alignItems: 'center',
+                            justifyContent: 'center',
+                            height: '40vh',
+                            border: 'none'
+                        }}>
+
+                            <iframe style={{ border: 'none' }} src="https://lottie.host/embed/3c09f83a-7432-4a06-b563-d0ddff7b95a6/Ted6dwvgxt.json"></iframe>
+                            <Typography variant="h6" mt={2} >No course available</Typography>
+                        </Container>}
+
+                    </Stack>
+                </CustomTabPanel>
+            ))}
+
         </Box>
     );
 }
