@@ -22,6 +22,8 @@ function Header() {
     const theme = useTheme();
     const navigate = useNavigate();
 
+    const [search, setSearch] = useState('');
+
     const { data: settingsData } = useSelector(state => state.landingPage.data)
     const { data: categoriesData } = useSelector(state => state.categories)
     const { user: authData } = useSelector(state => state.auth)
@@ -46,6 +48,13 @@ function Header() {
 
     const isLogin = authData !== null;
 
+
+
+    // Nav search and navigation to search page
+    function handleSearchChange(event) {
+        navigate(`/search?q=${event.target.value}`)
+        setSearch(event.target.value)
+    }
 
 
 
@@ -94,6 +103,8 @@ function Header() {
                     variant="outlined"
                     placeholder='Search popular courser here ...'
                     fullWidth
+                    value={search}
+                    onChange={handleSearchChange}
                     InputProps={{
                         startAdornment: (
                             <InputAdornment position="start">
