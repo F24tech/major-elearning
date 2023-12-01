@@ -7,13 +7,14 @@ import ListItemIcon from '@mui/material/ListItemIcon';
 import Divider from '@mui/material/Divider';
 import IconButton from '@mui/material/IconButton';
 import Tooltip from '@mui/material/Tooltip';
-import PersonAdd from '@mui/icons-material/PersonAdd';
+import PersonIcon from '@mui/icons-material/Person';
 import Settings from '@mui/icons-material/Settings';
 import Logout from '@mui/icons-material/Logout';
 import { useDispatch } from 'react-redux';
 import { logout } from '../../redux/authslice';
 import { useNavigate } from 'react-router-dom';
 import toast from 'react-hot-toast';
+import LightbulbIcon from '@mui/icons-material/Lightbulb';
 
 export default function AccountMenu() {
     const [anchorEl, setAnchorEl] = React.useState(null);
@@ -92,13 +93,20 @@ export default function AccountMenu() {
                 anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
             >
                 <MenuItem onClick={handleClose}>
-                    <Avatar /> My Account
+                    <ListItemIcon>
+                        <PersonIcon />
+                    </ListItemIcon>
+                    My Account
                 </MenuItem>
                 <MenuItem onClick={() => {
                     navigate('/my-learning')
                     handleClose()
                 }}>
-                    <Avatar /> My Learnings
+                    <ListItemIcon>
+                        <LightbulbIcon />
+                    </ListItemIcon>
+
+                    My Learnings
                 </MenuItem>
                 <Divider />
 

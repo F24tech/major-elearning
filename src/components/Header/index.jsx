@@ -40,9 +40,9 @@ function Header() {
         setAnchorEl(null);
     };
 
-    const handleCategorySelect = (category) => {
+    const handleCategorySelect = (category, id) => {
         handleCloseMenu();
-        navigate(`/c/${category.attributes.slug}`)
+        navigate(`/category/${id}`)
         // You can perform additional actions here based on the selected category.
     };
 
@@ -89,7 +89,7 @@ function Header() {
                     onClose={handleCloseMenu}
                 >
                     {categoriesData?.map((category) => (
-                        <MenuItem key={category} onClick={() => handleCategorySelect(category)}>
+                        <MenuItem key={category} onClick={() => handleCategorySelect(category, category.id)}>
                             {category.name}
                         </MenuItem>
                     ))}
