@@ -53,7 +53,14 @@ export default function BasicTabs() {
 
                 <CustomTabPanel value={value} index={index}>
                     <Stack flexDirection={"row"} gap={2}  >
-                        {category.courses.map((course) => <Card title={course.name} id={course.id} image={course.thumbnail.url} />)}
+                        {category.courses.map((course) =>
+                            <Card title={course.name} id={course.id} image={course.thumbnail.url} />
+                        )}
+
+
+
+
+
                         {category.courses.length === 0 && <Container style={{
                             display: 'flex',
                             flexDirection: 'column',

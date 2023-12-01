@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 
 import { Layout, Loader } from "./components";
-import { HomePage, AboutPage, SearchPage, CartPage, CheckoutPage, CoursePage, MyLearningPage, LoginPage, SignupPage } from "./pages";
+import { HomePage, AboutPage, SearchPage, CartPage, CheckoutPage, CoursePage, MyLearningPage, LoginPage, SignupPage, CategoryPage } from "./pages";
 import { Toaster } from "react-hot-toast";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchLandingPageData } from "./redux/landingpageslice";
@@ -51,6 +51,10 @@ function App() {
         {
           path: 'course',
           element: <CoursePage />
+        },
+        {
+          path: 'category/:id',
+          element: <CategoryPage />
         },
         {
           path: 'my-learning',
